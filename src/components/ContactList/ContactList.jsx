@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactList.module.css';
-import { deleteContact } from 'redux/sliceContacts';
+import { deleteContact } from 'redux/operations';
 
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts);
@@ -8,7 +8,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   //Funkcja filtruje kontakty na podstawie przekazanej tablicy (contacts) i stringa (filter)
-  const filteredContacts = contacts.filter(item =>
+  const filteredContacts = contacts.items.filter(item =>
     item.contact.toLowerCase().includes(filterValue.toLowerCase())
   );
 
