@@ -10,17 +10,17 @@ export const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.target;
-    const contact = form.elements.text.value;
-    const number = form.elements.tel.value;
+
+    const contact = e.target.elements.text.value;
+    const number = e.target.elements.tel.value;
     const name = contacts.map(item => item.contact);
     if (name.includes(contact)) {
       alert(`${contact} is alredy in contacts.`);
     } else {
-      dispatch(addContact(contact, number));
+      dispatch(addContact({ contact, number }));
     }
 
-    form.reset();
+    e.target.reset();
   };
 
   return (
