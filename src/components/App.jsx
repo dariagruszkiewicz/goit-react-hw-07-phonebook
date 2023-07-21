@@ -7,8 +7,6 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
-  const { items, isLoading, error } = useSelector(state => state);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,9 +15,6 @@ export const App = () => {
 
   return (
     <div className={css.wrapper}>
-      {isLoading ? <p>Is loading...</p> : ''}
-      {error ? <p>{error}</p> : ''}
-      {/* <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
       <h1>Phonebooks</h1>
       <ContactForm />
       <h2>Contacts</h2>

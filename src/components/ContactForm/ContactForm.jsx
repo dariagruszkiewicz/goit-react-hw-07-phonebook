@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactForm.module.css';
 import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(selectContacts);
+  console.log(contacts);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -11,7 +13,7 @@ export const ContactForm = () => {
     const form = e.target;
     const contact = form.elements.text.value;
     const number = form.elements.tel.value;
-    const name = contacts.items.map(item => item.contact);
+    const name = contacts.map(item => item.contact);
     if (name.includes(contact)) {
       alert(`${contact} is alredy in contacts.`);
     } else {
